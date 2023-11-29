@@ -9,14 +9,14 @@
 #define NAVIGATION 3
 #define NUMPAD 4
 
-&mt {
-    quick_tap_ms =<200>;
-};
-&lt {
-    quick_tap_ms =<200>;
-};
-
 / {
+    &mt {
+        quick_tap_ms =<200>;
+    };
+    &lt {
+        quick_tap_ms =<200>;
+    };
+
     behaviors {
         kp_kp: kp_kp {
             compatible = "zmk,behavior-hold-tap";
