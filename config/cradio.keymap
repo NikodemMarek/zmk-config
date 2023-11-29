@@ -9,17 +9,15 @@
 #define NAVIGATION 3
 #define NUMPAD 4
 
+&mt {
+    quick_tap_ms =<200>;
+};
+&lt {
+    quick_tap_ms =<200>;
+};
+
 / {
     behaviors {
-        mo_kp: mo_kp {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MO_KP";
-            bindings = <&macro_press &kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <30>;
-            quick-tap-ms = <20>;
-        };
         kp_kp: kp_kp {
             compatible = "zmk,behavior-hold-tap";
             label = "KP_KP";
@@ -27,7 +25,7 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <30>;
-            quick-tap-ms = <20>;
+            quick-tap-ms = <200>;
         };
     };
 
@@ -69,7 +67,7 @@
 &kp SEMI                 &kp COMMA         &kp DOT             &kp P            &kp Y    &kp F  &kp G             &kp C                &kp R              &kp L
 &mt LEFT_ALT A           &mt LEFT_SHIFT O  &mt LEFT_CONTROL E  &mt LEFT_META U  &kp I    &kp D  &mt RIGHT_META H  &mt RIGHT_CONTROL T  &mt RIGHT_SHIFT N  &mt RIGHT_ALT S
 &kp SQT                  &kp Q             &kp J               &kp K            &kp X    &kp B  &kp M             &kp W                &kp V              &kp Z
-&kp_kp BACKSPACE ESCAPE  &kp TAB                                                                                                       &mo_kp SYMBOLS SPACE     &kp_kp DELETE ENTER
+&kp_kp BACKSPACE ESCAPE  &kp TAB                                                                                                       &lt SYMBOLS SPACE     &kp_kp DELETE ENTER
             >;
 
             label = "dvorak";
@@ -112,7 +110,7 @@
 &ext_power EP_TOG  &kp K_MUTE    &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &bt BT_CLR      &kp FSLH   &kp N7  &kp N8  &kp N9          &kp MINUS
 &kp K_PREVIOUS     &kp K_NEXT    &kp K_PLAY_PAUSE   &kp K_STOP       &none           &kp STAR   &kp N4  &kp N5  &kp N6          &kp PLUS
 &bt BT_SEL 0       &bt BT_SEL 1  &bt BT_SEL 2       &bt BT_SEL 3     &bt BT_SEL 4    &kp COMMA  &kp N1  &kp N2  &kp N3          &kp DOT
-&trans             &trans                                                                                        &mo_kp SYMBOLS SPACE  &trans  
+&trans             &trans                                                                                        &lt SYMBOLS SPACE  &trans  
             >;
 
             label = "numpad";
@@ -123,7 +121,7 @@
 &kp Q                    &kp W             &kp E               &kp R           &kp T    &kp Y  &kp U            &kp I                &kp O              &kp P
 &mt LEFT_META A          &mt LEFT_SHIFT S  &mt LEFT_CONTROL D  &mt LEFT_ALT F  &kp G    &kp H  &mt RIGHT_ALT J  &mt RIGHT_CONTROL K  &mt RIGHT_SHIFT L  &mt RIGHT_META SEMI
 &kp Z                    &kp X             &kp C               &kp V           &kp B    &kp N  &kp M            &kp COMMA            &kp DOT            &kp FSLH
-&kp_kp BACKSPACE ESCAPE  &kp TAB                                                                                                     &mo_kp SYMBOLS SPACE     &kp_kp DELETE ENTER
+&kp_kp BACKSPACE ESCAPE  &kp TAB                                                                                                     &lt SYMBOLS SPACE     &kp_kp DELETE ENTER
             >;
         };
     };
