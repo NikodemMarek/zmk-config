@@ -9,14 +9,6 @@
 #define NAVIGATION 3
 #define NUMPAD 4
 
-&mt {
-    quick-tap-ms = <200>;
-};
-
-&lt {
-    quick-tap-ms = <200>;
-};
-
 / {
     behaviors {
         kp_kp: kp_kp {
