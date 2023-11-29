@@ -10,36 +10,6 @@
 #define NUMPAD 4
 
 / {
-    combos {
-        compatible = "zmk,combos";
-
-        switch_to_qwerty {
-            bindings = <&to QWERTY>;
-            key-positions = <10 14>;
-            require-prior-idle-ms = <2000>;
-            layers = <DVORAK>;
-        };
-
-        switch_to_dvorak {
-            bindings = <&to DVORAK>;
-            key-positions = <14 10>;
-            require-prior-idle-ms = <2000>;
-            layers = <QWERTY>;
-        };
-
-        to_navigation {
-            bindings = <&to NAVIGATION>;
-            key-positions = <16 17>;
-            require-prior-idle-ms = <500>;
-        };
-
-        to_numpad {
-            bindings = <&to NUMPAD>;
-            key-positions = <17 18>;
-            require-prior-idle-ms = <500>;
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
