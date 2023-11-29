@@ -9,14 +9,14 @@
 #define NAVIGATION 3
 #define NUMPAD 4
 
-/ {
-    &mt {
-        quick_tap_ms =<200>;
-    };
-    &lt {
-        quick_tap_ms =<200>;
-    };
+&mt {
+    quick-tap-ms = <200>;
+};
+&lt {
+    quick-tap-ms = <200>;
+};
 
+/ {
     behaviors {
         kp_kp: kp_kp {
             compatible = "zmk,behavior-hold-tap";
@@ -67,7 +67,7 @@
 &kp SEMI                 &kp COMMA         &kp DOT             &kp P            &kp Y    &kp F  &kp G             &kp C                &kp R              &kp L
 &mt LEFT_ALT A           &mt LEFT_SHIFT O  &mt LEFT_CONTROL E  &mt LEFT_META U  &kp I    &kp D  &mt RIGHT_META H  &mt RIGHT_CONTROL T  &mt RIGHT_SHIFT N  &mt RIGHT_ALT S
 &kp SQT                  &kp Q             &kp J               &kp K            &kp X    &kp B  &kp M             &kp W                &kp V              &kp Z
-&kp_kp BACKSPACE ESCAPE  &kp TAB                                                                                                       &lt SYMBOLS SPACE     &kp_kp DELETE ENTER
+&kp_kp BACKSPACE ESCAPE  &kp TAB                                                                                                       &lt SYMBOLS SPACE  &kp_kp DELETE ENTER
             >;
 
             label = "dvorak";
@@ -78,7 +78,7 @@
 &kp N7    &kp N5          &kp N3    &kp N1    &kp N9       &kp N0    &kp N2     &kp N4    &kp N6           &kp N8
 &kp LBKT  &kp LEFT_BRACE  &kp RBRC  &kp LPAR  &kp EQUAL    &kp STAR  &kp RPAR   &kp PLUS  &kp RIGHT_BRACE  &kp EXCL
 &kp DLLR  &kp AMPS        &kp BSLH  &kp PLUS  &kp AT       &kp HASH  &kp MINUS  &kp FSLH  &kp UNDERSCORE   &kp CARET
-&trans     &trans                                                                           &trans           &trans
+&trans     &trans                                                                         &trans           &trans
             >;
 
             label = "symbols";
@@ -88,7 +88,7 @@
 &kp N7    &kp N5          &kp N3    &kp N1    &kp N9       &kp N0    &kp N2     &kp N4    &kp N6           &kp N8
 &kp LBKT  &kp LEFT_BRACE  &kp RBRC  &kp LPAR  &kp EQUAL    &kp STAR  &kp RPAR   &kp PLUS  &kp RIGHT_BRACE  &kp EXCL
 &kp DLLR  &kp AMPS        &kp BSLH  &kp PLUS  &kp AT       &kp HASH  &kp MINUS  &kp FSLH  &kp UNDERSCORE   &kp CARET
-&trans     &trans                                                                           &trans           &trans
+&trans     &trans                                                                         &trans           &trans
             >;
 
             label = "symbols";
@@ -99,7 +99,7 @@
 &kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN    &none    &kp K_COPY  &kp K_PASTE    &kp K_CUT    &none
 &kp F5  &kp F6   &kp F7   &kp F8   &kp SCROLLLOCK     &kp TAB  &kp LEFT    &kp DOWN       &kp UP       &kp RIGHT
 &kp F9  &kp F10  &kp F11  &kp F12  &kp C_PAUSE        &none    &kp HOME    &kp PAGE_DOWN  &kp PAGE_UP  &kp END
-&trans   &trans                                                                             &trans        &trans
+&trans   &trans                                                                           &trans       &trans
             >;
 
             label = "navigation";
@@ -110,7 +110,7 @@
 &ext_power EP_TOG  &kp K_MUTE    &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &bt BT_CLR      &kp FSLH   &kp N7  &kp N8  &kp N9          &kp MINUS
 &kp K_PREVIOUS     &kp K_NEXT    &kp K_PLAY_PAUSE   &kp K_STOP       &none           &kp STAR   &kp N4  &kp N5  &kp N6          &kp PLUS
 &bt BT_SEL 0       &bt BT_SEL 1  &bt BT_SEL 2       &bt BT_SEL 3     &bt BT_SEL 4    &kp COMMA  &kp N1  &kp N2  &kp N3          &kp DOT
-&trans             &trans                                                                                        &lt SYMBOLS SPACE  &trans  
+&trans             &trans                                                                                       &lt SYMBOLS SPACE  &trans
             >;
 
             label = "numpad";
