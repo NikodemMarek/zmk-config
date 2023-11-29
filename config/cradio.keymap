@@ -1,104 +1,129 @@
-// Copyright (c) 2022 The ZMK Contributors
-// SPDX-License-Identifier: MIT
-
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/keys.h>
 
-// Home row mods macro
-#define HRML(k1,k2,k3,k4) &ht LSHFT k1  &ht LALT k2  &ht LCTRL k3  &ht LGUI k4
-#define HRMR(k1,k2,k3,k4) &ht RGUI k1  &ht RCTRL k2  &ht RALT k3  &ht RSHFT k4
+#define DVORAK 0
+#define QWERTY 5
+#define SYMBOLS 1
+#define SYMBOLS_ALT 2
+#define NAVIGATION 3
+#define NUMPAD 4
 
 / {
     behaviors {
-        ht: hold_tap {
-            label = "hold_tap";
+        mo_kp: mo_kp {
             compatible = "zmk,behavior-hold-tap";
+            label = "MO_KP";
+            bindings = <&mo>, <&kp>;
+
             #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <220>;
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <100>;
+            tapping-term-ms = <30>;
+            quick-tap-ms = <20>;
+        };
+        kp_kp: kp_kp {
+            compatible = "zmk,behavior-hold-tap";
+            label = "KP_KP";
             bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <30>;
+            quick-tap-ms = <20>;
         };
     };
 
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        tri_layer {
-            if-layers = <1 2>;
-            then-layer = <3>;
+    combos {
+        compatible = "zmk,combos";
+
+        switch_to_qwerty {
+            bindings = <&to QWERTY>;
+            key-positions = <10 14>;
+            require-prior-idle-ms = <2000>;
+            layers = <DVORAK>;
+        };
+
+        switch_to_dvorak {
+            bindings = <&to DVORAK>;
+            key-positions = <14 10>;
+            require-prior-idle-ms = <2000>;
+            layers = <QWERTY>;
+        };
+
+        to_navigation {
+            bindings = <&to NAVIGATION>;
+            key-positions = <16 17>;
+            require-prior-idle-ms = <500>;
+        };
+
+        to_numpad {
+            bindings = <&to NUMPAD>;
+            key-positions = <17 18>;
+            require-prior-idle-ms = <500>;
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
-        default_layer {
+
+        dvorak {
             bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │
-            &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │ ' "      │
-            HRML(A,        S,         D,         F)     &kp G          &kp H      HRMR(J,        K,         L,        SQT)
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ / ?      │
-            &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                            &lt 2 TAB   &kp ENTER     &kp SPACE  &lt 1 BSPC
-        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+&kp SEMI                 &kp COMMA         &kp DOT             &kp P            &kp Y    &kp F  &kp G             &kp C                &kp R              &kp L
+&mt LEFT_ALT A           &mt LEFT_SHIFT O  &mt LEFT_CONTROL E  &mt LEFT_META U  &kp I    &kp D  &mt RIGHT_META H  &mt RIGHT_CONTROL T  &mt RIGHT_SHIFT N  &mt RIGHT_ALT S
+&kp SQT                  &kp Q             &kp J               &kp K            &kp X    &kp B  &kp M             &kp W                &kp V              &kp Z
+&kp_kp BACKSPACE ESCAPE  &kp TAB                                                                                                       &mo_kp SYMBOLS SPACE     &kp_kp DELETE ENTER
             >;
+
+            label = "dvorak";
         };
 
-        right_layer {
+        symbols {
             bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│ INSERT   │  1       │  2       │  3       │          │   │ HOME     │ PAGE DN  │ PAGE UP  │ END      │  :       │
-            &kp INS    &kp N1     &kp N2     &kp N3     &trans         &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &kp COLON
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ DELETE   │  4       │  5       │  6       │          │   │ LEFT     │ DOWN     │ UP       │ RIGHT    │  ;       │
-            &kp DEL    &kp N4     &kp N5     &kp N6     &trans         &kp LARW   &kp DARW   &kp UARW   &kp RARW   &kp SEMI
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ CAPS     │  7       │  8       │  9       │  0       │   │          │          │          │          │          │
-           &caps_word  &kp N7     &kp N8     &kp N9     &kp N0         &trans     &trans     &trans     &trans     &trans
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &trans     &kp ESC        &trans     &trans
-        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+&kp N7    &kp N5          &kp N3    &kp N1    &kp N9       &kp N0    &kp N2     &kp N4    &kp N6           &kp N8
+&kp LBKT  &kp LEFT_BRACE  &kp RBRC  &kp LPAR  &kp EQUAL    &kp STAR  &kp RPAR   &kp PLUS  &kp RIGHT_BRACE  &kp EXCL
+&kp DLLR  &kp AMPS        &kp BSLH  &kp PLUS  &kp AT       &kp HASH  &kp MINUS  &kp FSLH  &kp UNDERSCORE   &kp CARET
+&trans     &trans                                                                           &trans           &trans
             >;
+
+            label = "symbols";
+        };
+        symbols_alt {
+            bindings = <
+&kp N7    &kp N5          &kp N3    &kp N1    &kp N9       &kp N0    &kp N2     &kp N4    &kp N6           &kp N8
+&kp LBKT  &kp LEFT_BRACE  &kp RBRC  &kp LPAR  &kp EQUAL    &kp STAR  &kp RPAR   &kp PLUS  &kp RIGHT_BRACE  &kp EXCL
+&kp DLLR  &kp AMPS        &kp BSLH  &kp PLUS  &kp AT       &kp HASH  &kp MINUS  &kp FSLH  &kp UNDERSCORE   &kp CARET
+&trans     &trans                                                                           &trans           &trans
+            >;
+
+            label = "symbols";
         };
 
-        left_layer {
+        navigation {
             bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│          │  [       │  {       │  }       │          │   │  ^       │  (       │  )       │  ]       │  ~       │
-            &trans     &kp LBKT   &kp LBRC   &kp RBRC   &trans         &kp CARET  &kp LPAR   &kp RPAR   &kp RBKT   &kp TILDE
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  !       │  @       │  #       │  $       │  %       │   │  *       │  -       │  =       │  \       │  `       │
-            &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT      &kp ASTRK  &kp MINUS  &kp EQUAL  &kp BSLH   &kp GRAVE
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │          │          │   │  &       │  _       │  +       │  │       │          │
-            &trans     &trans     &trans     &trans     &trans         &kp AMPS   &kp UNDER  &kp PLUS   &kp PIPE   &trans
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &trans     &trans         &trans     &trans
-        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+&kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN    &none    &kp K_COPY  &kp K_PASTE    &kp K_CUT    &none
+&kp F5  &kp F6   &kp F7   &kp F8   &kp SCROLLLOCK     &kp TAB  &kp LEFT    &kp DOWN       &kp UP       &kp RIGHT
+&kp F9  &kp F10  &kp F11  &kp F12  &kp C_PAUSE        &none    &kp HOME    &kp PAGE_DOWN  &kp PAGE_UP  &kp END
+&trans   &trans                                                                             &trans        &trans
             >;
+
+            label = "navigation";
         };
 
-        tri_layer {
+        numpad {
             bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│ RESET    │          │          │          │PROFILE 0 │   │          │          │          │          │  RESET   │
-           &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &trans     &trans     &trans     &trans    &sys_reset
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│BOOTLOADER│          │          │          │PROFILE 1 │   │          │          │          │          │BOOTLOADER│
-          &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &trans     &trans     &trans     &trans    &bootloader
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
-            &trans     &trans  &out OUT_TOG  &bt BT_CLR &bt BT_SEL 2    &trans     &trans     &trans     &trans     &trans
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &trans     &trans         &trans     &trans
-        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+&ext_power EP_TOG  &kp K_MUTE    &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &bt BT_CLR      &kp FSLH   &kp N7  &kp N8  &kp N9          &kp MINUS
+&kp K_PREVIOUS     &kp K_NEXT    &kp K_PLAY_PAUSE   &kp K_STOP       &none           &kp STAR   &kp N4  &kp N5  &kp N6          &kp PLUS
+&bt BT_SEL 0       &bt BT_SEL 1  &bt BT_SEL 2       &bt BT_SEL 3     &bt BT_SEL 4    &kp COMMA  &kp N1  &kp N2  &kp N3          &kp DOT
+&trans             &trans                                                                                        &mo_kp SYMBOLS SPACE  &trans  
+            >;
+
+            label = "numpad";
+        };
+
+        qwerty {
+            bindings = <
+&kp Q                    &kp W             &kp E               &kp R           &kp T    &kp Y  &kp U            &kp I                &kp O              &kp P
+&mt LEFT_META A          &mt LEFT_SHIFT S  &mt LEFT_CONTROL D  &mt LEFT_ALT F  &kp G    &kp H  &mt RIGHT_ALT J  &mt RIGHT_CONTROL K  &mt RIGHT_SHIFT L  &mt RIGHT_META SEMI
+&kp Z                    &kp X             &kp C               &kp V           &kp B    &kp N  &kp M            &kp COMMA            &kp DOT            &kp FSLH
+&kp_kp BACKSPACE ESCAPE  &kp TAB                                                                                                     &mo_kp SYMBOLS SPACE     &kp_kp DELETE ENTER
             >;
         };
     };
