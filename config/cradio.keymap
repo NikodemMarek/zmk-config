@@ -14,7 +14,7 @@
         mo_kp: mo_kp {
             compatible = "zmk,behavior-hold-tap";
             label = "MO_KP";
-            bindings = <&mo>, <&kp>;
+            bindings = <&macro_press &kp>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <30>;
