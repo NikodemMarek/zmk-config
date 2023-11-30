@@ -7,29 +7,11 @@
     combos {
         compatible = "zmk,combos";
 
-        tog_qwerty {
-            bindings = <&tog 5>;
-            key-positions = <10 14>;
+        exit_gaming {
+            bindings = <&tog 7>;
+            key-positions = <4 24 14>;
             require-prior-idle-ms = <2000>;
-            layers = <0 5>;
-        };
-
-        tog_navigation {
-            bindings = <&tog 3>;
-            key-positions = <16 17>;
-            require-prior-idle-ms = <500>;
-        };
-
-        tog_numpad {
-            bindings = <&tog 4>;
-            key-positions = <17 18>;
-            require-prior-idle-ms = <500>;
-        };
-
-        tog_gaming {
-            bindings = <&tog 6>;
-            key-positions = <4 0>;
-            require-prior-idle-ms = <500>;
+            layers = <7>;
         };
     };
 
@@ -38,43 +20,54 @@
 
         dvorak {
             bindings = <
-&kp SEMI        &kp COMMA         &kp DOT             &kp P            &kp Y      &kp F        &kp G             &kp C                &kp R              &kp L
-&mt LEFT_ALT A  &mt LEFT_SHIFT O  &mt LEFT_CONTROL E  &mt LEFT_META U  &kp I      &kp D        &mt RIGHT_META H  &mt RIGHT_CONTROL T  &mt RIGHT_SHIFT N  &mt RIGHT_ALT S
-&kp SQT         &kp Q             &kp J               &kp K            &kp X      &kp B        &kp M             &kp W                &kp V              &kp Z
-                                                      &kp ESCAPE       &kp TAB    &lt 1 SPACE  &kp ENTER
+&key_repeat  &kp ENTER  &kp BACKSPACE  &kp P  &kp Y      &kp F      &kp G  &kp C  &kp R  &kp L
+&kp A        &kp O      &kp E          &kp U  &kp I      &kp D      &kp H  &kp T  &kp N  &kp S
+&kp SQT      &kp Q      &kp J          &kp K  &kp X      &kp B      &kp M  &kp W  &kp V  &kp Z
+                                       &sl 1  &kp TAB    &kp SPACE  &sl 2
             >;
 
             label = "dvorak";
         };
 
+        modifiers {
+            bindings = <
+&none     &none     &tog 5     &tog 4     &none       &none  &none  &none  &none  &none
+&kp LALT  &kp LGUI  &kp LSHFT  &kp LCTRL  &kp RALT    &none  &none  &none  &none  &none
+&none     &to 6     &to 7      &to 0      &none       &none  &none  &none  &none  &none
+                               &none      &none       &none  &none
+            >;
+
+            label = "modifiers";
+        };
+
         symbols {
             bindings = <
-&kp N7    &kp N5          &kp N3    &kp N1         &kp N9        &kp N0    &kp N2     &kp N4    &kp N6           &kp N8
-&kp LBKT  &kp LEFT_BRACE  &kp RBRC  &kp LPAR       &kp EQUAL     &kp STAR  &kp RPAR   &kp PLUS  &kp RIGHT_BRACE  &kp EXCL
-&kp DLLR  &kp AMPS        &kp BSLH  &kp PLUS       &kp AT        &kp HASH  &kp MINUS  &kp FSLH  &kp UNDERSCORE   &kp CARET
-                                    &kp BACKSPACE  &kp DELETE    &trans    &trans
+&kp N7            &kp N5    &kp N3           &kp N1                 &kp N9        &kp N0       &kp N2             &kp N4     &kp N6         &kp N8
+&kp LESS_THAN     &kp LBKT  &kp LEFT_BRACE   &kp LPAR               &kp CARET     &kp PERCENT  &kp APOS           &kp DOT    &kp SEMICOLON  &kp ASTERISK
+&kp GREATER_THAN  &kp RBKT  &kp RIGHT_BRACE  &kp RIGHT_PARENTHESIS  &kp DOLLAR    &kp AT       &kp DOUBLE_QUOTES  &kp COMMA  &kp COLON      &kp SLASH
+                                             &none                  &none         &none        &sl 3
             >;
 
             label = "symbols";
         };
 
-        symbols_alt {
+        symbols_ext {
             bindings = <
-&kp N7    &kp N5          &kp N3    &kp N1    &kp N9       &kp N0    &kp N2     &kp N4    &kp N6           &kp N8
-&kp LBKT  &kp LEFT_BRACE  &kp RBRC  &kp LPAR  &kp EQUAL    &kp STAR  &kp RPAR   &kp PLUS  &kp RIGHT_BRACE  &kp EXCL
-&kp DLLR  &kp AMPS        &kp BSLH  &kp PLUS  &kp AT       &kp HASH  &kp MINUS  &kp FSLH  &kp UNDERSCORE   &kp CARET
-                                    &trans    &trans       &trans    &trans
+&none  &none          &none           &none            &none            &none     &none        &none      &none         &none
+&none  &kp AMPERSAND  &kp UNDERSCORE  &kp QUESTION     &kp GRAVE        &kp HASH  &kp EQUAL    &kp PLUS   &kp ASTERISK  &none
+&none  &kp PIPE       &kp TILDE       &kp EXCLAMATION  &kp BACKSLASH    &none     &kp PERCENT  &kp MINUS  &kp SLASH     &none
+                                      &none            &none            &none     &none
             >;
 
-            label = "symbols";
+            label = "symbols_ext";
         };
 
         navigation {
             bindings = <
-&kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN    &none    &kp K_COPY  &kp K_PASTE    &kp K_CUT    &none
-&kp F5  &kp F6   &kp F7   &kp F8   &kp SCROLLLOCK     &kp TAB  &kp LEFT    &kp DOWN       &kp UP       &kp RIGHT
-&kp F9  &kp F10  &kp F11  &kp F12  &kp C_PAUSE        &none    &kp HOME    &kp PAGE_DOWN  &kp PAGE_UP  &kp END
-                          &trans   &trans             &trans   &trans
+&kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN    &kp BACKSPACE  &kp K_COPY  &kp K_PASTE    &kp K_CUT    &kp DELETE
+&kp F5  &kp F6   &kp F7   &kp F8   &kp SCROLLLOCK     &kp TAB        &kp LEFT    &kp DOWN       &kp UP       &kp RIGHT
+&kp F9  &kp F10  &kp F11  &kp F12  &kp C_PAUSE        &kp INSERT     &kp HOME    &kp PAGE_DOWN  &kp PAGE_UP  &kp END
+                          &tog 4   &trans             &trans         &trans
             >;
 
             label = "navigation";
@@ -82,10 +75,10 @@
 
         numpad {
             bindings = <
-&ext_power EP_TOG  &kp K_MUTE    &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &bt BT_CLR      &kp FSLH     &kp N7  &kp N8  &kp N9  &kp MINUS
-&kp K_PREVIOUS     &kp K_NEXT    &kp K_PLAY_PAUSE   &kp K_STOP       &none           &kp STAR     &kp N4  &kp N5  &kp N6  &kp PLUS
-&bt BT_SEL 0       &bt BT_SEL 1  &bt BT_SEL 2       &bt BT_SEL 3     &bt BT_SEL 4    &kp COMMA    &kp N1  &kp N2  &kp N3  &kp DOT
-                                                    &trans           &trans          &lt 1 SPACE  &trans
+&sys_reset      &kp K_MUTE    &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &bt BT_CLR           &kp FSLH   &kp N7  &kp N8  &kp N9  &kp MINUS
+&kp K_PREVIOUS  &kp K_NEXT    &kp K_PLAY_PAUSE   &kp K_STOP       &ext_power EP_TOG    &kp STAR   &kp N4  &kp N5  &kp N6  &kp PLUS
+&bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2       &bt BT_SEL 3     &bt BT_SEL 4         &kp COMMA  &kp N1  &kp N2  &kp N3  &kp DOT
+                                                 &tog 5           &trans               &trans     &trans
             >;
 
             label = "numpad";
@@ -93,19 +86,19 @@
 
         qwerty {
             bindings = <
-&kp Q            &kp W             &kp E               &kp R           &kp T      &kp Y        &kp U            &kp I                &kp O              &kp P
-&mt LEFT_META A  &mt LEFT_SHIFT S  &mt LEFT_CONTROL D  &mt LEFT_ALT F  &kp G      &kp H        &mt RIGHT_ALT J  &mt RIGHT_CONTROL K  &mt RIGHT_SHIFT L  &mt RIGHT_META SEMI
-&kp Z            &kp X             &kp C               &kp V           &kp B      &kp N        &kp M            &kp COMMA            &kp DOT            &kp FSLH
-                                                       &kp ESCAPE      &kp TAB    &lt 1 SPACE  &kp ENTER
+&kp Q  &kp W  &kp E  &kp R  &kp T      &kp Y      &kp U  &kp I      &kp O    &kp P
+&kp A  &kp S  &kp D  &kp F  &kp G      &kp H      &kp J  &kp K      &kp L    &kp SEMI
+&kp Z  &kp X  &kp C  &kp V  &kp B      &kp N      &kp M  &kp COMMA  &kp DOT  &kp FSLH
+                     &sl 1  &kp TAB    &kp SPACE  &sl 2
             >;
         };
 
         gaming {
             bindings = <
-&kp ESC    &kp Q  &kp W  &kp E     &kp R        &trans  &trans  &trans  &trans  &trans
-&kp LSHFT  &kp A  &kp S  &kp D     &kp F        &trans  &trans  &trans  &trans  &trans
-&kp LCTRL  &kp Z  &kp X  &kp C     &kp V        &trans  &trans  &trans  &trans  &trans
-                         &kp LALT  &kp SPACE    &trans  &trans
+&kp ESC    &kp Q  &kp W  &kp E     &kp R        &kp T  &kp Y  &kp U  &kp I  &kp O
+&kp LSHFT  &kp A  &kp S  &kp D     &kp F        &kp G  &kp H  &kp J  &kp K  &kp L
+&kp LCTRL  &kp Z  &kp X  &kp C     &kp V        &kp B  &kp N  &kp M  &kp P  &kp FSLH
+                         &kp LALT  &kp SPACE    &none  &to 0
             >;
 
             label = "gaming";
