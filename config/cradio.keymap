@@ -13,6 +13,99 @@
             require-prior-idle-ms = <2000>;
             layers = <7>;
         };
+
+        ctrl_shift {
+            bindings = <&ctrl_shift>;
+            key-positions = <13 12>;
+            layers = <1>;
+        };
+
+        ctrl_alt {
+            bindings = <&crl_alt>;
+            key-positions = <10 13>;
+            layers = <1>;
+        };
+
+        ctrl_gui {
+            bindings = <&ctrl_gui>;
+            key-positions = <13 11>;
+            layers = <1>;
+        };
+
+        shift_alt {
+            bindings = <&shift_alt>;
+            key-positions = <12 10>;
+            layers = <1>;
+        };
+
+        shift_gui {
+            bindings = <&shift_gui>;
+            key-positions = <12 11>;
+            layers = <1>;
+        };
+
+        alt_gui {
+            bindings = <&alt_gui>;
+            key-positions = <10 11>;
+            layers = <1>;
+        };
+
+        ctrl_shift_alt {
+            bindings = <&ctrl_shift_alt>;
+            key-positions = <13 12 10>;
+            layers = <1>;
+        };
+    };
+
+    macros {
+        ctrl_shift: ctrl_shift {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&sk LEFT_CONTROL &sk LEFT_SHIFT>;
+            label = "CTRL_SHIFT";
+        };
+
+        crl_alt: crl_alt {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&sk LEFT_CONTROL &sk LEFT_ALT>;
+            label = "CRL_ALT";
+        };
+
+        ctrl_gui: ctrl_gui {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&sk LEFT_CONTROL &sk LEFT_GUI>;
+            label = "CTRL_GUI";
+        };
+
+        shift_alt: shift_alt {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&sk LEFT_SHIFT &sk LEFT_ALT>;
+            label = "SHIFT_ALT";
+        };
+
+        shift_gui: shift_gui {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&sk LEFT_SHIFT &sk LEFT_GUI>;
+            label = "SHIFT_GUI";
+        };
+
+        alt_gui: alt_gui {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&sk LEFT_ALT &sk LEFT_GUI>;
+            label = "ALT_GUI";
+        };
+
+        ctrl_shift_alt: ctrl_shift_alt {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&sk LEFT_CONTROL &sk LEFT_SHIFT &sk LEFT_ALT>;
+            label = "CTRL_SHIFT_ALT";
+        };
     };
 
     keymap {
@@ -20,10 +113,10 @@
 
         dvorak {
             bindings = <
-&key_repeat  &kp ENTER  &kp BACKSPACE  &kp P  &kp Y      &kp F      &kp G  &kp C  &kp R  &kp L
-&kp A        &kp O      &kp E          &kp U  &kp I      &kp D      &kp H  &kp T  &kp N  &kp S
-&kp SQT      &kp Q      &kp J          &kp K  &kp X      &kp B      &kp M  &kp W  &kp V  &kp Z
-                                       &sl 1  &kp TAB    &kp SPACE  &sl 2
+&kp TAB      &kp ENTER  &kp BACKSPACE  &kp P  &kp Y         &kp F      &kp G  &kp C  &kp R  &kp L
+&kp A        &kp O      &kp E          &kp U  &kp I         &kp D      &kp H  &kp T  &kp N  &kp S
+&key_repeat  &kp Q      &kp J          &kp K  &kp X         &kp B      &kp M  &kp W  &kp V  &kp Z
+                                       &sl 1  &kp ESCAPE    &kp SPACE  &sl 2
             >;
 
             label = "dvorak";
@@ -31,10 +124,10 @@
 
         modifiers {
             bindings = <
-&none     &none     &tog 5     &tog 4     &none       &none  &none  &none  &none  &none
-&sk LALT  &sk LGUI  &sk LSHFT  &sk LCTRL  &sk RALT    &none  &none  &none  &none  &none
-&none     &to 6     &to 7      &to 0      &none       &none  &none  &none  &none  &none
-                               &kp ESCAPE &none       &none  &none
+&none         &none         &tog 5          &tog 4            &tog 8           &none  &none  &none  &none  &none
+&sk LEFT_ALT  &sk LEFT_GUI  &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk RIGHT_ALT    &none  &none  &none  &none  &none
+&none         &to 6         &to 7           &to 0             &none            &none  &none  &none  &none  &none
+                                            &none             &none            &none  &none
             >;
 
             label = "modifiers";
@@ -75,10 +168,10 @@
 
         numpad {
             bindings = <
-&sys_reset      &kp K_MUTE    &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &bt BT_CLR           &kp FSLH   &kp N7  &kp N8  &kp N9  &kp MINUS
-&kp K_PREVIOUS  &kp K_NEXT    &kp K_PLAY_PAUSE   &kp K_STOP       &ext_power EP_TOG    &kp STAR   &kp N4  &kp N5  &kp N6  &kp PLUS
-&bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2       &bt BT_SEL 3     &bt BT_SEL 4         &kp COMMA  &kp N1  &kp N2  &kp N3  &kp DOT
-                                                 &tog 5           &trans               &trans     &trans
+&kp TAB  &kp ENTER  &kp BACKSPACE  &none      &none             &kp FSLH   &kp N7  &kp N8  &kp N9  &kp MINUS
+&none    &none      &none          &kp EQUAL  &kp KP_NUMLOCK    &kp STAR   &kp N4  &kp N5  &kp N6  &kp PLUS
+&none    &none      &none          &none      &none             &kp COMMA  &kp N1  &kp N2  &kp N3  &kp DOT
+                                   &tog 5     &kp ESCAPE        &kp SPACE  &kp N0
             >;
 
             label = "numpad";
@@ -95,13 +188,24 @@
 
         gaming {
             bindings = <
-&kp ESC    &kp Q  &kp W  &kp E     &kp R        &kp T  &kp Y  &kp U  &kp I  &kp O
-&kp LSHFT  &kp A  &kp S  &kp D     &kp F        &kp G  &kp H  &kp J  &kp K  &kp L
-&kp LCTRL  &kp Z  &kp X  &kp C     &kp V        &kp B  &kp N  &kp M  &kp P  &kp FSLH
-                         &kp LALT  &kp SPACE    &none  &to 0
+&kp ESC    &kp Q  &kp W  &kp E     &kp R        &kp T      &kp Y  &kp U  &kp I  &kp O
+&kp LSHFT  &kp A  &kp S  &kp D     &kp F        &kp G      &kp H  &kp J  &kp K  &kp L
+&kp LCTRL  &kp Z  &kp X  &kp C     &kp V        &kp B      &kp N  &kp M  &kp P  &kp FSLH
+                         &kp LALT  &kp SPACE    &kp SPACE  &to 0
             >;
 
             label = "gaming";
+        };
+
+        special {
+            bindings = <
+&none       &kp K_MUTE      &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &none     &bootloader   &sys_reset    &none         &ext_power EP_TOG  &bt BT_CLR
+&kp K_STOP  &kp K_PREVIOUS  &kp K_PLAY_PAUSE   &kp K_NEXT       &none     &none         &none         &none         &none              &none
+&none       &none           &none              &none            &none     &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3       &bt BT_SEL 4
+                                               &tog 8           &trans    &trans        &trans
+            >;
+
+            label = "special";
         };
     };
 };
