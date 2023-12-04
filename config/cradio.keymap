@@ -2,7 +2,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/keys.h>
 
 / {
     combos {
@@ -125,10 +124,10 @@
 
         modifiers {
             bindings = <
-&none         &none         &tog 5          &tog 4            &tog 8            &none  &none  &none  &none  &none
-&sk LEFT_ALT  &sk LEFT_GUI  &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk RIGHT_ALT     &none  &none  &none  &none  &none
-&none         &to 6         &to 7           &to 0             &kt LEFT_SHIFT    &none  &none  &none  &none  &none
-                                            &none             &none             &none  &none
+&none         &none         &tog 5          &tog 4            &tog 8           &sl 8  &to 6           &to 0  &none  &none
+&sk LEFT_ALT  &sk LEFT_GUI  &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk RIGHT_ALT    &none  &kt LEFT_SHIFT  &sl 4  &sl 5  &none
+&none         &none         &none           &none             &to 7            &none  &none           &none  &none  &none
+                                            &none             &none            &none  &none
             >;
 
             label = "modifiers";
@@ -160,7 +159,7 @@
             bindings = <
 &kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN    &kp BACKSPACE  &kp K_COPY  &kp K_PASTE    &kp K_CUT    &kp DELETE
 &kp F5  &kp F6   &kp F7   &kp F8   &kp SCROLLLOCK     &kp TAB        &kp LEFT    &kp DOWN       &kp UP       &kp RIGHT
-&kp F9  &kp F10  &kp F11  &kp F12  &kp C_PAUSE        &kp INSERT     &kp HOME    &kp PAGE_DOWN  &kp PAGE_UP  &kp END
+&kp F9  &kp F10  &kp F11  &kp F12  &kp C_PAUSE        &kp ENTER      &kp HOME    &kp PAGE_DOWN  &kp PAGE_UP  &kp END
                           &tog 4   &trans             &trans         &trans
             >;
 
