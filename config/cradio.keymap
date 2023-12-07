@@ -2,6 +2,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/keys.h>
 
 / {
     combos {
@@ -54,6 +55,20 @@
             bindings = <&ctrl_shift_alt>;
             key-positions = <13 12 10>;
             layers = <1>;
+        };
+
+        to_qwerty {
+            bindings = <&to 6>;
+            key-positions = <0 1 2 3 4>;
+            layers = <0>;
+            require-prior-idle-ms = <2000>;
+        };
+
+        to_dvorak {
+            bindings = <&to 0>;
+            key-positions = <0 1 2 3 4>;
+            layers = <6>;
+            require-prior-idle-ms = <2000>;
         };
     };
 
@@ -124,7 +139,7 @@
 
         modifiers {
             bindings = <
-&none         &none         &tog 5          &tog 4            &tog 8           &sl 8  &to 6           &to 0  &none  &none
+&none         &none         &tog 5          &tog 4            &tog 8           &sl 8  &none           &none  &none  &none
 &sk LEFT_ALT  &sk LEFT_GUI  &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk RIGHT_ALT    &none  &kt LEFT_SHIFT  &sl 4  &sl 5  &none
 &none         &none         &none           &none             &to 7            &none  &none           &none  &none  &none
                                             &none             &none            &none  &none
@@ -179,10 +194,10 @@
 
         qwerty {
             bindings = <
-&kp Q  &kp W  &kp E  &kp R  &kp T      &kp Y      &kp U  &kp I      &kp O    &kp P
-&kp A  &kp S  &kp D  &kp F  &kp G      &kp H      &kp J  &kp K      &kp L    &kp SEMI
-&kp Z  &kp X  &kp C  &kp V  &kp B      &kp N      &kp M  &kp COMMA  &kp DOT  &kp FSLH
-                     &sl 1  &kp TAB    &kp SPACE  &sl 2
+&kp Q  &kp W  &kp E  &kp R  &kp T         &kp Y      &kp U  &kp I          &kp O      &kp P
+&kp A  &kp S  &kp D  &kp F  &kp G         &kp H      &kp J  &kp K          &kp L      &key_repeat
+&kp Z  &kp X  &kp C  &kp V  &kp B         &kp N      &kp M  &kp BACKSPACE  &kp ENTER  &kp TAB
+                     &sl 1  &kp ESCAPE    &kp SPACE  &sl 2
             >;
         };
 
