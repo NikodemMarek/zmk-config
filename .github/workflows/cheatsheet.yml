@@ -2,6 +2,9 @@ name: cheatsheet
 
 on: [push, pull_request, workflow_dispatch]
 
+permissions:
+  contents: write
+
 jobs:
   cheatsheet:
     runs-on: ubuntu-latest
