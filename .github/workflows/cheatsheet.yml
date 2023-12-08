@@ -7,18 +7,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Build Docker Image
+      - name: build docker image and generate cheatsheets
         run: |
           docker compose build
           docker compose up
 
-      - name: Commit Changes
+      - name: commit cheatsheets
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
-          git add .
-          git commit -m "Update cheatsheet"
+          git add cheatsheets
+          git commit -m "update cheatsheet"
           git push
