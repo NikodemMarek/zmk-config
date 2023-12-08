@@ -1,0 +1,25 @@
+name: cheatsheet
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  cheatsheet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Build Docker Image
+        run: |
+          docker compose build
+          docker compose up
+
+      - name: Copy Generated File
+        run: cp -r ../../cheatsheets /github/workspace/
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: cheatsheets
+          path: cheatsheets
