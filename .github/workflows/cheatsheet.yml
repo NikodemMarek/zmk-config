@@ -16,7 +16,7 @@ jobs:
           docker compose up
 
       - name: Copy Generated File
-        run: cp -r ../../cheatsheets /github/workspace/
+        run: cp -r $(pwd)/cheatsheets /github/workspace/
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
