@@ -15,9 +15,6 @@ jobs:
           docker compose build
           docker compose up
 
-      - name: Copy Generated File
-        run: cp -r $(pwd)/cheatsheets /github/workspace/
-
       - name: Commit Changes
         run: |
           git config --global user.email "github-actions@github.com"
