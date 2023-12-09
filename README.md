@@ -1,1 +1,1 @@
-![blank layout image](relative%20cheatsheets/cradio.png?raw=true "blank layout image")
+![blank layout image](https://github.com/NikodemMarek/zmk-config/blob/main/cheatsheets/cradio.png)
