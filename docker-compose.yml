@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  cheatsheet-generator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./config:/config
+      - ./cheatsheets:/images
+    command: sh -c "rm /images/*;
+                    zmk-viewer generate cradio -f /config/*.keymap --single;"
