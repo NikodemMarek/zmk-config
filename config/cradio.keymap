@@ -70,6 +70,18 @@
             layers = <6>;
             require-prior-idle-ms = <2000>;
         };
+
+        symbols {
+            bindings = <&sl 2>;
+            key-positions = <31 32>;
+            layers = <0 5 6 7 3>;
+        };
+
+        symbols_ext {
+            bindings = <&sl 3>;
+            key-positions = <31 32>;
+            layers = <2>;
+        };
     };
 
     macros {
