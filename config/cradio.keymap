@@ -179,10 +179,10 @@
 
         symbols {
             bindings = <
-&none             &none     &none                  &none            &none         &kp NUMBER_0  &kp GRAVE          &kp QUESTION   &kp EXCLAMATION  &kp BACKSLASH
-&kp LESS_THAN     &kp LBKT  &kp LEFT_PARENTHESIS   &kp LEFT_BRACE   &kp CARET     &kp PERCENT   &kp APOS           &kp SEMICOLON  &kp UNDERSCORE   &kp AMPERSAND
-&kp GREATER_THAN  &kp RBKT  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp DOLLAR    &kp AT_SIGN   &kp DOUBLE_QUOTES  &kp COLON      &kp TILDE        &kp PIPE
-                                                   &none            &none         &none         &none
+&none             &none     &none                  &none            &kp BACKSLASH    &kp NUMBER_0  &kp GRAVE          &kp QUESTION   &kp EXCLAMATION  &kp HASH
+&kp LESS_THAN     &kp LBKT  &kp LEFT_PARENTHESIS   &kp LEFT_BRACE   &kp CARET        &kp PERCENT   &kp APOS           &kp SEMICOLON  &kp UNDERSCORE   &kp AMPERSAND
+&kp GREATER_THAN  &kp RBKT  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp DOLLAR       &kp AT_SIGN   &kp DOUBLE_QUOTES  &kp COLON      &kp TILDE        &kp PIPE
+                                                   &none            &none            &none         &none
             >;
 
             label = "symbols";
