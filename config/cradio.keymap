@@ -9,10 +9,10 @@
         compatible = "zmk,combos";
 
         exit_gaming {
-            bindings = <&tog 7>;
+            bindings = <&tog 6>;
             key-positions = <4 24 14>;
             require-prior-idle-ms = <2000>;
-            layers = <7>;
+            layers = <6>;
         };
 
         ctrl_shift {
@@ -58,7 +58,7 @@
         };
 
         to_qwerty {
-            bindings = <&to 6>;
+            bindings = <&to 5>;
             key-positions = <0 1 2 3 4>;
             layers = <0>;
             require-prior-idle-ms = <2000>;
@@ -67,20 +67,14 @@
         to_dvorak {
             bindings = <&to 0>;
             key-positions = <0 1 2 3 4>;
-            layers = <6>;
+            layers = <5>;
             require-prior-idle-ms = <2000>;
         };
 
         symbols {
             bindings = <&sl 2>;
             key-positions = <31 32>;
-            layers = <0 5 6 7 3>;
-        };
-
-        symbols_ext {
-            bindings = <&sl 3>;
-            key-positions = <31 32>;
-            layers = <2>;
+            layers = <0 4 5 6>;
         };
     };
 
@@ -152,10 +146,10 @@
 
         dvorak {
             bindings = <
-&kp ENTER    &kp TAB  &kp BACKSPACE  &kp P          &kp Y           &kp F      &kp G  &kp C  &kp R  &kp L
-&kp A        &kp O    &kp E          &kp U          &kp I           &kp D      &kp H  &kp T  &kp N  &kp S
-&key_repeat  &kp Q    &kp J          &kp K          &kp X           &kp B      &kp M  &kp W  &kp V  &kp Z
-                                     &mod_hold 1 1  &lt 5 ESCAPE    &kp SPACE  &sl 2
+&kp ENTER    &kp TAB  &kp BACKSPACE  &kp P          &kp Y           &kp F      &kp G          &kp C  &kp R  &kp L
+&kp A        &kp O    &kp E          &kp U          &kp I           &kp D      &kp H          &kp T  &kp N  &kp S
+&key_repeat  &kp Q    &kp J          &kp K          &kp X           &kp B      &kp M          &kp W  &kp V  &kp Z
+                                     &mod_hold 1 1  &lt 4 ESCAPE    &kp SPACE  &mod_hold 2 2
             >;
 
             label = "dvorak";
@@ -163,9 +157,9 @@
 
         modifiers {
             bindings = <
-&none         &none         &caps_word      &none             &none            &tog 8  &none  &tog 4  &tog 5  &none
-&sk LEFT_ALT  &sk LEFT_GUI  &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk RIGHT_ALT    &sl 8   &none  &sl 4   &sl 5   &to 7
-&none         &none         &none           &none             &none            &none   &none  &none   &none   &none
+&none         &none         &caps_word      &none             &none            &tog 7  &none  &tog 3  &tog 4  &none
+&sk LEFT_ALT  &sk LEFT_GUI  &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk RIGHT_ALT    &sl 7   &none  &sl 3   &sl 4   &to 6
+&none         &none         &kp CAPSLOCK    &none             &none            &none   &none  &none   &none   &none
                                             &none             &none            &none   &none
             >;
 
@@ -174,24 +168,13 @@
 
         symbols {
             bindings = <
-&kp N7            &kp N5    &kp N3                 &kp N1           &kp N9        &kp N0       &kp N2             &kp N4     &kp N6         &kp N8
-&kp LESS_THAN     &kp LBKT  &kp LEFT_PARENTHESIS   &kp LEFT_BRACE   &kp CARET     &kp PERCENT  &kp APOS           &kp DOT    &kp SEMICOLON  &kp ASTERISK
-&kp GREATER_THAN  &kp RBKT  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp DOLLAR    &kp AT       &kp DOUBLE_QUOTES  &kp COMMA  &kp COLON      &kp SLASH
-                                                   &none            &none         &none        &sl 3
+&none             &none     &none                  &none            &none         &kp NUMBER_0  &kp GRAVE          &kp QUESTION   &kp EXCLAMATION  &kp BACKSLASH
+&kp LESS_THAN     &kp LBKT  &kp LEFT_PARENTHESIS   &kp LEFT_BRACE   &kp CARET     &kp PERCENT   &kp APOS           &kp SEMICOLON  &kp UNDERSCORE   &kp AMPERSAND
+&kp GREATER_THAN  &kp RBKT  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp DOLLAR    &kp AT_SIGN   &kp DOUBLE_QUOTES  &kp COLON      &kp TILDE        &kp PIPE
+                                                   &none            &none         &none         &none
             >;
 
             label = "symbols";
-        };
-
-        symbols_ext {
-            bindings = <
-&none  &none          &none           &none            &none            &none     &none        &none      &none         &none
-&none  &kp AMPERSAND  &kp UNDERSCORE  &kp QUESTION     &kp GRAVE        &kp HASH  &kp EQUAL    &kp PLUS   &kp ASTERISK  &none
-&none  &kp PIPE       &kp TILDE       &kp EXCLAMATION  &kp BACKSLASH    &none     &kp PERCENT  &kp MINUS  &kp SLASH     &none
-                                      &none            &none            &none     &sl 2
-            >;
-
-            label = "symbols_ext";
         };
 
         navigation {
@@ -199,7 +182,7 @@
 &kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN    &kp BACKSPACE  &kp K_COPY  &kp K_PASTE    &kp K_CUT    &kp DELETE
 &kp F5  &kp F6   &kp F7   &kp F8   &kp SCROLLLOCK     &kp TAB        &kp LEFT    &kp DOWN       &kp UP       &kp RIGHT
 &kp F9  &kp F10  &kp F11  &kp F12  &kp C_PAUSE        &kp ENTER      &kp HOME    &kp PAGE_DOWN  &kp PAGE_UP  &kp END
-                          &tog 4   &trans             &trans         &trans
+                          &tog 3   &trans             &trans         &trans
             >;
 
             label = "navigation";
@@ -210,7 +193,7 @@
 &kp TAB  &kp ENTER  &kp BACKSPACE  &none      &none             &kp FSLH   &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS
 &none    &none      &none          &kp EQUAL  &kp KP_NUMLOCK    &kp STAR   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PLUS
 &none    &none      &none          &none      &none             &kp COMMA  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp DOT
-                                   &tog 5     &kp ESCAPE        &kp SPACE  &kp NUMBER_0
+                                   &tog 4     &kp ESCAPE        &kp SPACE  &kp NUMBER_0
             >;
 
             label = "numpad";
@@ -230,7 +213,7 @@
 &kp ESC    &kp Q  &kp W  &kp E     &kp R        &kp T  &kp Y   &kp U  &kp I  &kp O
 &kp LSHFT  &kp A  &kp S  &kp D     &kp F        &kp G  &kp H   &kp J  &kp K  &kp L
 &kp LCTRL  &kp Z  &kp X  &kp C     &kp V        &kp B  &kp N   &kp M  &kp P  &kp FSLH
-                         &kp LALT  &kp SPACE    &to 0  &tog 5
+                         &kp LALT  &kp SPACE    &to 0  &tog 4
             >;
 
             label = "gaming";
@@ -241,7 +224,7 @@
 &none         &kp K_MUTE      &kp C_VOLUME_DOWN  &kp C_VOLUME_UP    &bootloader    &bootloader   &none         &none         &none         &bt BT_CLR
 &kp K_STOP    &kp K_PREVIOUS  &kp K_PLAY_PAUSE   &kp K_NEXT         &sys_reset     &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
 &out OUT_USB  &out OUT_BLE    &out OUT_TOG       &ext_power EP_TOG  &none          &sys_reset    &none         &none         &none         &none
-                                                 &tog 8             &trans         &trans        &trans
+                                                 &tog 7             &trans         &trans        &trans
             >;
 
             label = "special";
