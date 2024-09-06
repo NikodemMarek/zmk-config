@@ -139,10 +139,10 @@
 
         dvorak {
             bindings = <
-&kp ENTER       &kp TAB          &kp BACKSPACE     &kp P               &kp Y              &kp F                   &kp G               &kp C             &kp R            &kp L
-&mt LEFT_ALT A  &mt LEFT_META O  &mt LEFT_SHIFT E  &mt LEFT_CONTROL U  &mt RIGHT_ALT I    &mt D RIGHT_ALT         &mt LEFT_CONTROL H  &mt LEFT_SHIFT T  &mt LEFT_META N  &mt LEFT_ALT S
-&key_repeat     &kp Q            &kp J             &kp K               &kp X              &kp B                   &kp M               &kp W             &kp V            &kp Z
-                                                   &mod_hold 1 1       &lt 2 ESCAPE       &special_space 3 SPACE  &mod_hold 3 3
+&kp ENTER    &kp TAB  &kp BACKSPACE  &kp P          &kp Y           &kp F                   &kp G          &kp C  &kp R  &kp L
+&kp A        &kp O    &kp E          &kp U          &kp I           &kp D                   &kp H          &kp T  &kp N  &kp S
+&key_repeat  &kp Q    &kp J          &kp K          &kp X           &kp B                   &kp M          &kp W  &kp V  &kp Z
+                                     &mod_hold 1 1  &lt 2 ESCAPE    &special_space 3 SPACE  &mod_hold 3 3
             >;
 
             display-name = "dvorak";
