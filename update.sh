@@ -1,18 +1,37 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+if [ $EUID != 0 ]; then
+    sudo "$0" "$@"
+    exit $?
+fi
+
+FIRMWARE_ZIP=$1
+if [ ! -f $FIRMWARE_ZIP ]; then
+    echo "please provide a firmware zip file"
+    exit 1
+fi
+
+FIRMWARE_DIR=$(mktemp -d)
+echo "unpacking firmware to: $FIRMWARE_DIR"
+unzip $FIRMWARE_ZIP -d $FIRMWARE_DIR
+
+FIRMWARE_FILE=$(find $FIRMWARE_DIR -name *left*)
+if [ ! -f $FIRMWARE_FILE ]; then
+    echo "could not find firmware file"
+    exit 1
+fi
+echo "found firmware file: $FIRMWARE_FILE"
 
 echo "put the nice!nano into bootloader, flashing in 5 seconds..."
 sleep 5
-echo "flashing..."
 
-export GH_TOKEN=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 # Read-only access to artifacts
-gh run download --dir .tmp/ --repo NikodemMarek/zmk-config -n firmware
+echo "mounting nice!nano..."
+MOUNT_DIR=$(mktemp -d)
+sudo mount /dev/sda $MOUNT_DIR
 
-mkdir .tmp/nicenano/
-sudo mount /dev/sda .tmp/nicenano/
+echo "flashing firmware..."
+sudo cp -f $FIRMWARE_FILE $MOUNT_DIR/CURRENT.UF2
+sleep 5
 
-sudo rm -f .tmp/nicenano/CURRENT.UF2
-sudo cp $(find .tmp -name *left*) .tmp/nicenano/CURRENT.UF2
-
-sudo umount .tmp/nicenano/
-
-rm -rf .tmp/*
+echo "unmounting nice!nano..."
+sudo umount $MOUNT_DIR
