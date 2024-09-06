@@ -8,13 +8,6 @@
     combos {
         compatible = "zmk,combos";
 
-        exit_gaming {
-            bindings = <&tog 7>;
-            key-positions = <4 24 14>;
-            require-prior-idle-ms = <2000>;
-            layers = <7>;
-        };
-
         ctrl_shift {
             bindings = <&ctrl_shift>;
             key-positions = <13 12>;
@@ -57,24 +50,10 @@
             layers = <1>;
         };
 
-        to_qwerty {
-            bindings = <&to 6>;
-            key-positions = <0 1 2 3 4>;
-            layers = <0>;
-            require-prior-idle-ms = <2000>;
-        };
-
-        to_dvorak {
-            bindings = <&to 0>;
-            key-positions = <0 1 2 3 4>;
-            layers = <6>;
-            require-prior-idle-ms = <2000>;
-        };
-
         symbols {
             bindings = <&sl 3>;
             key-positions = <31 32>;
-            layers = <0 2 6 7>;
+            layers = <0 2 6>;
         };
     };
 
@@ -167,9 +146,9 @@
 
         modifiers {
             bindings = <
-&none         &none         &caps_word      &none             &none            &tog 5  &none  &tog 4  &tog 2  &to 8
-&sk LEFT_ALT  &sk LEFT_GUI  &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk RIGHT_ALT    &sl 5   &none  &sl 4   &sl 2   &to 7
-&none         &none         &kp CAPSLOCK    &none             &none            &none   &none  &none   &none   &none
+&none         &none         &caps_word      &none             &kp CAPSLOCK     &tog 5  &none  &tog 4  &tog 2  &none
+&sk LEFT_ALT  &sk LEFT_GUI  &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk RIGHT_ALT    &sl 5   &none  &sl 4   &sl 2   &to 6
+&none         &none         &none           &none             &none            &none   &none  &none   &none   &none
                                             &none             &none            &none   &none
             >;
 
@@ -200,7 +179,7 @@
 
         navigation {
             bindings = <
-&kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN    &kp K_COPY   &kp LS(UP_ARROW)  &kp LS(DOWN_ARROW)  &kp LS(UP_ARROW)  &kp LS(RIGHT_ARROW)
+&kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN    &kp K_COPY   &kp LC(UP_ARROW)  &kp LC(DOWN_ARROW)  &kp LC(UP_ARROW)  &kp LC(RIGHT_ARROW)
 &kp F5  &kp F6   &kp F7   &kp F8   &kp SCROLLLOCK     &kp K_PASTE  &kp LEFT          &kp DOWN            &kp UP            &kp RIGHT
 &kp F9  &kp F10  &kp F11  &kp F12  &kp C_PAUSE        &kp K_CUT    &kp HOME          &kp PAGE_DOWN       &kp PAGE_UP       &kp END
                           &tog 4   &trans             &trans       &trans
@@ -220,35 +199,15 @@
             display-name = "special";
         };
 
-        qwerty {
-            bindings = <
-&kp Q  &kp W  &kp E  &kp R          &kp T         &kp Y                   &kp U  &kp I          &kp O    &kp P
-&kp A  &kp S  &kp D  &kp F          &kp G         &kp H                   &kp J  &kp K          &kp L    &key_repeat
-&kp Z  &kp X  &kp C  &kp V          &kp B         &kp N                   &kp M  &kp BACKSPACE  &kp TAB  &kp ENTER
-                     &mod_hold 1 1  &kp ESCAPE    &special_space 3 SPACE  &sl 3
-            >;
-        };
-
         gaming {
             bindings = <
-&kp ESC    &kp Q  &kp W  &kp E     &kp R        &kp T  &kp Y   &kp U  &kp I  &kp O
-&kp LSHFT  &kp A  &kp S  &kp D     &kp F        &kp G  &kp H   &kp J  &kp K  &kp L
-&kp LCTRL  &kp Z  &kp X  &kp C     &kp V        &kp B  &kp N   &kp M  &kp P  &kp FSLH
-                         &kp LALT  &kp SPACE    &to 0  &tog 2
+&kp ESC    &kp Q  &kp W  &kp E     &kp R        &kp T          &kp Y   &kp U  &kp I  &kp O
+&kp LSHFT  &kp A  &kp S  &kp D     &kp F        &kp G          &kp H   &kp J  &kp K  &kp L
+&kp LCTRL  &kp Z  &kp X  &kp C     &kp V        &kp B          &kp N   &kp M  &kp P  &kp FSLH
+                         &kp LALT  &kp SPACE    &mod_hold 0 0  &tog 2
             >;
 
             display-name = "gaming";
-        };
-
-        minecraft {
-            bindings = <
-&kp ESC                 &kp TAB        &hold_tap W BACKSPACE  &kp P          &kp Y        &kp F  &kp G   &kp C  &kp R  &kp L
-&mt LEFT_SHIFT A        &hold_tap A O  &hold_tap S E          &hold_tap D U  &kp I        &kp D  &kp H   &kp T  &kp N  &kp S
-&mt LEFT_CONTROL ENTER  &kp Q          &kp J                  &kp K          &kp X        &kp B  &kp M   &kp W  &kp V  &kp Z
-                                                              &kp LALT       &kp SPACE    &to 0  &tog 2
-            >;
-
-            display-name = "minecraft";
         };
     };
 };
