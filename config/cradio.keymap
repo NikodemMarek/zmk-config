@@ -55,6 +55,22 @@
             key-positions = <31 32>;
             layers = <0 2 6>;
         };
+
+        soft_off_left {
+            bindings = <&soft_off>;
+            key-positions = <0 20>;
+            layers = <0>;
+            require-prior-idle-ms = <3000>;
+            slow-release;
+        };
+
+        soft_off_right {
+            bindings = <&soft_off>;
+            key-positions = <9 29>;
+            layers = <0>;
+            require-prior-idle-ms = <3000>;
+            slow-release;
+        };
     };
 
     macros {
