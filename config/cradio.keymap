@@ -83,56 +83,48 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&sk LEFT_CONTROL &sk LEFT_SHIFT>;
-            label = "CTRL_SHIFT";
         };
 
         crl_alt: crl_alt {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&sk LEFT_CONTROL &sk LEFT_ALT>;
-            label = "CRL_ALT";
         };
 
         ctrl_gui: ctrl_gui {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&sk LEFT_CONTROL &sk LEFT_GUI>;
-            label = "CTRL_GUI";
         };
 
         shift_alt: shift_alt {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&sk LEFT_SHIFT &sk LEFT_ALT>;
-            label = "SHIFT_ALT";
         };
 
         shift_gui: shift_gui {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&sk LEFT_SHIFT &sk LEFT_GUI>;
-            label = "SHIFT_GUI";
         };
 
         alt_gui: alt_gui {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&sk LEFT_ALT &sk LEFT_GUI>;
-            label = "ALT_GUI";
         };
 
         ctrl_shift_alt: ctrl_shift_alt {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&sk LEFT_CONTROL &sk LEFT_SHIFT &sk LEFT_ALT>;
-            label = "CTRL_SHIFT_ALT";
         };
     };
 
     behaviors {
         mod_hold: mod_hold {
             compatible = "zmk,behavior-hold-tap";
-            label = "MOD_HOLD";
             bindings = <&mo>, <&sl>;
 
             #binding-cells = <2>;
@@ -142,7 +134,6 @@
 
         hold_tap: hold_tap {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAP";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -152,7 +143,6 @@
 
         special_space: special_space {
             compatible = "zmk,behavior-hold-tap";
-            label = "SPECIAL_SPACE";
             bindings = <&mo>, <&kp>;
 
             #binding-cells = <2>;
@@ -172,7 +162,7 @@
                                      &mod_hold 1 1  &lt 2 ESCAPE    &special_space 3 SPACE  &mod_hold 3 3
             >;
 
-            label = "dvorak";
+            display-name = "dvorak";
         };
 
         modifiers {
@@ -183,7 +173,7 @@
                                             &none             &none            &none   &none
             >;
 
-            label = "modifiers";
+            display-name = "modifiers";
         };
 
         numpad {
@@ -194,7 +184,7 @@
                                    &tog 2     &kp ESCAPE        &kp SPACE  &kp NUMBER_0
             >;
 
-            label = "numpad";
+            display-name = "numpad";
         };
 
         symbols {
@@ -205,7 +195,7 @@
                                                    &none            &none            &none         &none
             >;
 
-            label = "symbols";
+            display-name = "symbols";
         };
 
         navigation {
@@ -216,7 +206,7 @@
                           &tog 4   &trans             &trans       &trans
             >;
 
-            label = "navigation";
+            display-name = "navigation";
         };
 
         special {
@@ -227,7 +217,7 @@
                                                  &tog 5             &trans         &trans        &trans
             >;
 
-            label = "special";
+            display-name = "special";
         };
 
         qwerty {
@@ -247,7 +237,7 @@
                          &kp LALT  &kp SPACE    &to 0  &tog 2
             >;
 
-            label = "gaming";
+            display-name = "gaming";
         };
 
         minecraft {
@@ -258,7 +248,7 @@
                                                               &kp LALT       &kp SPACE    &to 0  &tog 2
             >;
 
-            label = "minecraft";
+            display-name = "minecraft";
         };
     };
 };
