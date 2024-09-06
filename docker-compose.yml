@@ -1,10 +1,6 @@
-version: '3'
-
 services:
   cheatsheet-generator:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: nikodoom/zmk-viewer:latest
     volumes:
       - ./config:/config
       - ./cheatsheets:/images

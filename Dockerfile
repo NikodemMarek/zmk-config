@@ -1,9 +1,9 @@
 FROM alpine:latest
 
-# install dependencies (curl, sudo, bash)
-RUN apk --no-cache add curl sudo bash
+# install dependencies (go)
+RUN apk add go
 
-# install zmk-viewer
-RUN curl -sL https://raw.githubusercontent.com/MrMarble/zmk-viewer/master/scripts/install.sh | sudo -E bash -
+# install zmk-viewer to path
+RUN GOBIN=/usr/local/bin/ go install github.com/mrmarble/zmk-viewer/cmd/zmk-viewer@latest
 
 WORKDIR /images
