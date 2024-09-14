@@ -104,7 +104,7 @@
     };
 
     behaviors {
-        mod_hold: mod_hold {
+        sticky_hold: sticky_hold {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&mo>, <&sl>;
 
@@ -113,7 +113,7 @@
             flavor = "tap-preferred";
         };
 
-        hold_tap: hold_tap {
+        tap_hold: tap_hold {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&kp>, <&kp>;
 
@@ -130,6 +130,16 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <100>;
         };
+
+        layer_hold: layer_hold {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&mo>, <&to>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            label = "LAYER_HOLD";
+        };
     };
 
     keymap {
@@ -137,10 +147,10 @@
 
         dvorak {
             bindings = <
-&kp ENTER    &kp TAB  &kp BACKSPACE  &kp P          &kp Y           &kp F                   &kp G          &kp C  &kp R  &kp L
-&kp A        &kp O    &kp E          &kp U          &kp I           &kp D                   &kp H          &kp T  &kp N  &kp S
-&key_repeat  &kp Q    &kp J          &kp K          &kp X           &kp B                   &kp M          &kp W  &kp V  &kp Z
-                                     &mod_hold 1 1  &lt 2 ESCAPE    &special_space 3 SPACE  &mod_hold 3 3
+&kp ENTER    &kp TAB  &kp BACKSPACE  &kp P             &kp Y           &kp F                   &kp G             &kp C  &kp R  &kp L
+&kp A        &kp O    &kp E          &kp U             &kp I           &kp D                   &kp H             &kp T  &kp N  &kp S
+&key_repeat  &kp Q    &kp J          &kp K             &kp X           &kp B                   &kp M             &kp W  &kp V  &kp Z
+                                     &sticky_hold 1 1  &lt 2 ESCAPE    &special_space 3 SPACE  &sticky_hold 3 3
             >;
 
             display-name = "dvorak";
@@ -148,10 +158,10 @@
 
         modifiers {
             bindings = <
-&none         &none         &caps_word      &none             &kp CAPSLOCK     &tog 5  &none  &tog 4  &tog 2  &none
-&sk LEFT_ALT  &sk LEFT_GUI  &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk RIGHT_ALT    &sl 5   &none  &sl 4   &sl 2   &to 6
-&none         &none         &none           &none             &none            &none   &none  &none   &none   &none
-                                            &none             &none            &none   &none
+&none         &none         &caps_word      &none             &kp CAPSLOCK     &to 6   &kp LC(UP_ARROW)  &kp LC(DOWN_ARROW)  &kp LC(UP_ARROW)  &kp LC(RIGHT_ARROW)
+&sk LEFT_ALT  &sk LEFT_GUI  &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk RIGHT_ALT    &sl 4   &kp LEFT          &kp DOWN            &kp UP            &kp RIGHT
+&none         &none         &none           &none             &none            &sl 5   &kp HOME          &kp PAGE_DOWN       &kp PAGE_UP       &kp END
+                                            &none             &none            &trans  &trans
             >;
 
             display-name = "modifiers";
@@ -162,7 +172,7 @@
 &kp TAB  &kp ENTER  &kp BACKSPACE  &none      &none             &kp FSLH   &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS
 &none    &none      &none          &kp EQUAL  &kp KP_NUMLOCK    &kp STAR   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PLUS
 &none    &none      &none          &none      &none             &kp COMMA  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp DOT
-                                   &tog 2     &kp ESCAPE        &kp SPACE  &kp NUMBER_0
+                                   &trans     &kp ESCAPE        &trans     &kp NUMBER_0
             >;
 
             display-name = "numpad";
@@ -181,21 +191,21 @@
 
         navigation {
             bindings = <
-&kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN    &kp K_COPY   &kp LC(UP_ARROW)  &kp LC(DOWN_ARROW)  &kp LC(UP_ARROW)  &kp LC(RIGHT_ARROW)
-&kp F5  &kp F6   &kp F7   &kp F8   &kp SCROLLLOCK     &kp K_PASTE  &kp LEFT          &kp DOWN            &kp UP            &kp RIGHT
-&kp F9  &kp F10  &kp F11  &kp F12  &kp C_PAUSE        &kp K_CUT    &kp HOME          &kp PAGE_DOWN       &kp PAGE_UP       &kp END
-                          &tog 4   &trans             &trans       &trans
+&kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN    &none           &kp K_MUTE      &kp C_VOLUME_DOWN  &kp C_VOLUME_UP &none
+&kp F5  &kp F6   &kp F7   &kp F8   &kp SCROLLLOCK     &none  &kp K_STOP    &kp K_PREVIOUS  &kp K_PLAY_PAUSE   &kp K_NEXT
+&kp F9  &kp F10  &kp F11  &kp F12  &kp C_PAUSE        &none  &none  &none  &none  &none
+                          &trans   &trans             &none  &none
             >;
 
-            display-name = "navigation";
+            display-name = "special";
         };
 
-        special {
+        hardware {
             bindings = <
-&none         &kp K_MUTE      &kp C_VOLUME_DOWN  &kp C_VOLUME_UP    &soft_off    &soft_off     &none         &none         &none         &bt BT_CLR
-&kp K_STOP    &kp K_PREVIOUS  &kp K_PLAY_PAUSE   &kp K_NEXT         &none        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+&bt BT_CLR   &none  &none  &none  &soft_off    &soft_off     &none         &none         &none         &none
+&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4 &none  &none  &none  &none  &none
 &out OUT_USB  &out OUT_BLE    &out OUT_TOG       &ext_power EP_TOG  &none        &none         &none         &none         &none         &none
-                                                 &tog 5             &trans       &trans        &trans
+                     &none  &none        &none         &none
             >;
 
             display-name = "special";
@@ -203,10 +213,10 @@
 
         gaming {
             bindings = <
-&kp ESC    &kp Q  &kp W  &kp E     &kp R        &kp T          &kp Y   &kp U  &kp I  &kp O
-&kp LSHFT  &kp A  &kp S  &kp D     &kp F        &kp G          &kp H   &kp J  &kp K  &kp L
-&kp LCTRL  &kp Z  &kp X  &kp C     &kp V        &kp B          &kp N   &kp M  &kp P  &kp FSLH
-                         &kp LALT  &kp SPACE    &mod_hold 0 0  &tog 2
+&kp ESC    &kp Q  &kp W  &kp E     &kp R        &kp T            &kp Y   &kp U  &kp I  &kp O
+&kp LSHFT  &kp A  &kp S  &kp D     &kp F        &kp G            &kp H   &kp J  &kp K  &kp L
+&kp LCTRL  &kp Z  &kp X  &kp C     &kp V        &kp B            &kp N   &kp M  &kp P  &kp FSLH
+                         &kp LALT  &kp SPACE    &layer_hold 0 0  &tog 2
             >;
 
             display-name = "gaming";
