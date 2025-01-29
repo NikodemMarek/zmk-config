@@ -53,7 +53,7 @@
         };
 
         symbols {
-            bindings = <&sl 3>;
+            bindings = <&mo 1>;
             key-positions = <31 32>;
             layers = <0 2 6>;
         };
@@ -104,16 +104,6 @@
     };
 
     behaviors {
-        hold_mo_tap_kp: hold_mo_tap_kp {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&mo>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <100>;
-            label = "HOLD_MO_TAP_KP";
-        };
-
         hold_mo_tap_to: hold_mo_tap_to {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&mo>, <&to>;
@@ -124,23 +114,52 @@
             label = "HOLD_MO_TAP_TO";
         };
 
-        hold_kp_tap_sk: hold_kp_tap_sk {
+        dance_alt_shift: dance_alt_shift {
+            compatible = "zmk,behavior-tap-dance";
+            label = "DANCE_ALT_SHIFT";
+            #binding-cells = <0>;
+            bindings = <&sk LEFT_ALT>, <&sk LEFT_SHIFT>;
+        };
+
+        dance_meta_ctrl: dance_meta_ctrl {
+            compatible = "zmk,behavior-tap-dance";
+            label = "DANCE_META_CTRL";
+            #binding-cells = <0>;
+            bindings = <&sk LEFT_META>, <&sk LEFT_CONTROL>;
+        };
+
+        dance_esc_ralt: dance_esc_ralt {
+            compatible = "zmk,behavior-tap-dance";
+            label = "DANCE_ESC_RALT";
+            #binding-cells = <0>;
+            bindings = <&kp ESCAPE>, <&sk RIGHT_ALT>;
+        };
+
+        ht_shift_dance_alt: ht_shift_dance_alt {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_KP_TAP_SK";
-            bindings = <&kp>, <&sk>;
+            label = "HT_SHIFT_DANCE_ALT";
+            bindings = <&kp>, <&dance_alt_shift>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
 
-        hold_mo_tap_sk: hold_mo_tap_sk {
+        ht_ctrl_dance_meta: ht_ctrl_dance_meta {
             compatible = "zmk,behavior-hold-tap";
-            bindings = <&mo>, <&sk>;
+            label = "HT_CTRL_DANCE_META";
+            bindings = <&kp>, <&dance_meta_ctrl>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            label = "HOLD_MO_TAP_SK";
+        };
+
+        ht_mo_dance_esc_ralt: ht_mo_dance_esc_ralt {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_MO_DANCE_ESC_RALT";
+            bindings = <&mo>, <&dance_esc_ralt>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
         };
     };
 
@@ -149,10 +168,10 @@
 
         dvorak {
             bindings = <
-&kp ENTER    &kp TAB  &kp BACKSPACE  &kp P                       &kp Y           &kp F                    &kp G                                    &kp C  &kp R  &kp L
-&kp A        &kp O    &kp E          &kp U                       &kp I           &kp D                    &kp H                                    &kp T  &kp N  &kp S
-&key_repeat  &kp Q    &kp J          &kp K                       &kp X           &kp B                    &kp M                                    &kp W  &kp V  &kp Z
-                                     &hold_mo_tap_sk 1 LEFT_ALT  &lt 2 ESCAPE    &hold_mo_tap_kp 3 SPACE  &hold_kp_tap_sk LEFT_SHIFT LEFT_CONTROL
+&kp ENTER    &kp TAB  &kp BACKSPACE  &kp P                               &kp Y                        &kp F        &kp G                             &kp C  &kp R  &kp L
+&kp A        &kp O    &kp E          &kp U                               &kp I                        &kp D        &kp H                             &kp T  &kp N  &kp S
+&key_repeat  &kp Q    &kp J          &kp K                               &kp X                        &kp B        &kp M                             &kp W  &kp V  &kp Z
+                                     &ht_ctrl_dance_meta LEFT_CONTROL 0  &ht_mo_dance_esc_ralt 2 0    &lt 3 SPACE  &ht_shift_dance_alt LEFT_SHIFT 0
             >;
 
             display-name = "dvorak";
