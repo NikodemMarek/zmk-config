@@ -7,101 +7,7 @@
 &soft_off { hold-time-ms = <3000>; };
 
 / {
-    combos {
-        compatible = "zmk,combos";
-
-        ctrl_shift {
-            bindings = <&ctrl_shift>;
-            key-positions = <13 12>;
-            layers = <1>;
-        };
-
-        ctrl_alt {
-            bindings = <&crl_alt>;
-            key-positions = <10 13>;
-            layers = <1>;
-        };
-
-        ctrl_gui {
-            bindings = <&ctrl_gui>;
-            key-positions = <13 11>;
-            layers = <1>;
-        };
-
-        shift_alt {
-            bindings = <&shift_alt>;
-            key-positions = <12 10>;
-            layers = <1>;
-        };
-
-        shift_gui {
-            bindings = <&shift_gui>;
-            key-positions = <12 11>;
-            layers = <1>;
-        };
-
-        alt_gui {
-            bindings = <&alt_gui>;
-            key-positions = <10 11>;
-            layers = <1>;
-        };
-
-        ctrl_shift_alt {
-            bindings = <&ctrl_shift_alt>;
-            key-positions = <13 12 10>;
-            layers = <1>;
-        };
-
-        symbols {
-            bindings = <&mo 1>;
-            key-positions = <31 32>;
-            layers = <0 2 6>;
-        };
-    };
-
-    macros {
-        ctrl_shift: ctrl_shift {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&sk LEFT_CONTROL &sk LEFT_SHIFT>;
-        };
-
-        crl_alt: crl_alt {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&sk LEFT_CONTROL &sk LEFT_ALT>;
-        };
-
-        ctrl_gui: ctrl_gui {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&sk LEFT_CONTROL &sk LEFT_GUI>;
-        };
-
-        shift_alt: shift_alt {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&sk LEFT_SHIFT &sk LEFT_ALT>;
-        };
-
-        shift_gui: shift_gui {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&sk LEFT_SHIFT &sk LEFT_GUI>;
-        };
-
-        alt_gui: alt_gui {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&sk LEFT_ALT &sk LEFT_GUI>;
-        };
-
-        ctrl_shift_alt: ctrl_shift_alt {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&sk LEFT_CONTROL &sk LEFT_SHIFT &sk LEFT_ALT>;
-        };
-    };
+    combos { compatible = "zmk,combos"; };
 
     behaviors {
         hold_mo_tap_to: hold_mo_tap_to {
@@ -114,52 +20,25 @@
             label = "HOLD_MO_TAP_TO";
         };
 
-        dance_alt_shift: dance_alt_shift {
+        dance_shift_alt: dance_shift_alt {
             compatible = "zmk,behavior-tap-dance";
-            label = "DANCE_ALT_SHIFT";
+            label = "DANCE_SHIFT_ALT";
             #binding-cells = <0>;
-            bindings = <&sk LEFT_ALT>, <&sk LEFT_SHIFT>;
+            bindings = <&mt LEFT_SHIFT LEFT_ALT>, <&sk LEFT_SHIFT>;
         };
 
-        dance_meta_ctrl: dance_meta_ctrl {
+        dance_ctrl_meta: dance_ctrl_meta {
             compatible = "zmk,behavior-tap-dance";
-            label = "DANCE_META_CTRL";
+            label = "DANCE_CTRL_META";
             #binding-cells = <0>;
-            bindings = <&sk LEFT_META>, <&sk LEFT_CONTROL>;
+            bindings = <&mt LEFT_CONTROL LEFT_META>, <&sk LEFT_CONTROL>;
         };
 
-        dance_esc_ralt: dance_esc_ralt {
+        dance_mo_esc_ralt: dance_mo_esc_ralt {
             compatible = "zmk,behavior-tap-dance";
-            label = "DANCE_ESC_RALT";
+            label = "DANCE_MO_ESC_RALT";
             #binding-cells = <0>;
-            bindings = <&kp ESCAPE>, <&sk RIGHT_ALT>;
-        };
-
-        ht_shift_dance_alt: ht_shift_dance_alt {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HT_SHIFT_DANCE_ALT";
-            bindings = <&kp>, <&dance_alt_shift>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-        };
-
-        ht_ctrl_dance_meta: ht_ctrl_dance_meta {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HT_CTRL_DANCE_META";
-            bindings = <&kp>, <&dance_meta_ctrl>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-        };
-
-        ht_mo_dance_esc_ralt: ht_mo_dance_esc_ralt {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HT_MO_DANCE_ESC_RALT";
-            bindings = <&mo>, <&dance_esc_ralt>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            bindings = <&lt 1 ESCAPE>, <&sk RIGHT_ALT>;
         };
     };
 
@@ -168,32 +47,21 @@
 
         dvorak {
             bindings = <
-&kp ENTER    &kp TAB  &kp BACKSPACE  &kp P                               &kp Y                        &kp F        &kp G                             &kp C  &kp R  &kp L
-&kp A        &kp O    &kp E          &kp U                               &kp I                        &kp D        &kp H                             &kp T  &kp N  &kp S
-&key_repeat  &kp Q    &kp J          &kp K                               &kp X                        &kp B        &kp M                             &kp W  &kp V  &kp Z
-                                     &ht_ctrl_dance_meta LEFT_CONTROL 0  &ht_mo_dance_esc_ralt 2 0    &lt 3 SPACE  &ht_shift_dance_alt LEFT_SHIFT 0
+&kp ENTER    &kp TAB  &kp BACKSPACE  &kp P             &kp Y                 &kp F        &kp G             &kp C  &kp R  &kp L
+&kp A        &kp O    &kp E          &kp U             &kp I                 &kp D        &kp H             &kp T  &kp N  &kp S
+&key_repeat  &kp Q    &kp J          &kp K             &kp X                 &kp B        &kp M             &kp W  &kp V  &kp Z
+                                     &dance_ctrl_meta  &dance_mo_esc_ralt    &lt 2 SPACE  &dance_shift_alt
             >;
 
             display-name = "dvorak";
         };
 
-        modifiers {
-            bindings = <
-&none         &none         &caps_word      &none             &kp CAPSLOCK     &to 6   &kp LC(UP_ARROW)  &kp LC(DOWN_ARROW)  &kp LC(UP_ARROW)  &kp LC(RIGHT_ARROW)
-&sk LEFT_GUI  &sk LEFT_ALT  &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk RIGHT_ALT    &sl 4   &kp LEFT          &kp DOWN            &kp UP            &kp RIGHT
-&none         &none         &none           &none             &none            &sl 5   &kp HOME          &kp PAGE_DOWN       &kp PAGE_UP       &kp END
-                                            &none             &none            &trans  &trans
-            >;
-
-            display-name = "modifiers";
-        };
-
         numpad {
             bindings = <
-&kp TAB  &kp ENTER  &kp BACKSPACE  &none      &none             &kp FSLH   &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS
-&none    &none      &none          &kp EQUAL  &kp KP_NUMLOCK    &kp STAR   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PLUS
-&none    &none      &none          &none      &none             &kp COMMA  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp DOT
-                                   &trans     &kp ESCAPE        &trans     &kp NUMBER_0
+&kp LC(LEFT_ARROW)  &kp LC(DOWN_ARROW)  &kp LC(UP_ARROW)  &kp LC(RIGHT_ARROW)  &to 5    &kp FSLH      &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS
+&kp LEFT            &kp DOWN            &kp UP            &kp RIGHT            &sl 3    &kp COMMA     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PERIOD
+&kp HOME            &kp PAGE_DOWN       &kp PAGE_UP       &kp END              &sl 4    &kp ASTERISK  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PLUS
+                                                          &none                &none    &kp EQUAL     &kp NUMBER_0
             >;
 
             display-name = "numpad";
@@ -201,21 +69,21 @@
 
         symbols {
             bindings = <
-&none             &none     &none                  &none            &kp BACKSLASH    &kp NUMBER_0  &kp GRAVE          &kp QUESTION   &kp EXCLAMATION  &kp HASH
-&kp LESS_THAN     &kp LBKT  &kp LEFT_PARENTHESIS   &kp LEFT_BRACE   &kp CARET        &kp PERCENT   &kp APOS           &kp SEMICOLON  &kp UNDERSCORE   &kp AMPERSAND
-&kp GREATER_THAN  &kp RBKT  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp DOLLAR       &kp AT_SIGN   &kp DOUBLE_QUOTES  &kp COLON      &kp TILDE        &kp PIPE
-                                                   &none            &none            &none         &none
+&none             &none     &none                  &none            &none         &kp BACKSLASH  &kp GRAVE          &kp QUESTION   &kp EXCLAMATION  &kp HASH
+&kp LESS_THAN     &kp LBKT  &kp LEFT_PARENTHESIS   &kp LEFT_BRACE   &kp CARET     &kp PERCENT    &kp APOS           &kp SEMICOLON  &kp TILDE        &kp AMPERSAND
+&kp GREATER_THAN  &kp RBKT  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp DOLLAR    &kp AT_SIGN    &kp DOUBLE_QUOTES  &kp COLON      &kp UNDERSCORE   &kp PIPE
+                                                   &none            &none         &none          &none
             >;
 
             display-name = "symbols";
         };
 
-        navigation {
+        special {
             bindings = <
 &kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN    &none  &kp K_MUTE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP   &none
 &kp F5  &kp F6   &kp F7   &kp F8   &kp SCROLLLOCK     &none  &kp K_STOP  &kp K_PREVIOUS     &kp K_PLAY_PAUSE  &kp K_NEXT
 &kp F9  &kp F10  &kp F11  &kp F12  &kp C_PAUSE        &none  &none       &none              &none             &none
-                          &trans   &trans             &none  &none
+                          &none    &none              &none  &none
             >;
 
             display-name = "special";
@@ -237,7 +105,7 @@
 &kp ESC    &kp Q  &kp W  &kp E     &kp R        &kp T                &kp Y   &kp U  &kp I  &kp O
 &kp LSHFT  &kp A  &kp S  &kp D     &kp F        &kp G                &kp H   &kp J  &kp K  &kp L
 &kp LCTRL  &kp Z  &kp X  &kp C     &kp V        &kp B                &kp N   &kp M  &kp P  &kp FSLH
-                         &kp LALT  &kp SPACE    &hold_mo_tap_to 0 0  &tog 2
+                         &kp LALT  &kp SPACE    &hold_mo_tap_to 0 0  &tog 1
             >;
 
             display-name = "gaming";
