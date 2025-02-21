@@ -38,6 +38,8 @@
             label = "DANCE_SHIFT_ALT";
             #binding-cells = <0>;
             bindings = <&hold_kp_tap_sk LEFT_SHIFT LEFT_ALT>, <&sk LEFT_SHIFT>;
+
+            tapping-term-ms = <100>;
         };
 
         dance_ctrl_meta: dance_ctrl_meta {
@@ -47,6 +49,8 @@
             bindings =
                 <&hold_kp_tap_sk LEFT_CONTROL LEFT_META>,
                 <&sk LEFT_CONTROL>;
+
+            tapping-term-ms = <100>;
         };
 
         dance_mo_esc_ralt: dance_mo_esc_ralt {
@@ -63,6 +67,7 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
+            retro-tap;
         };
     };
 
