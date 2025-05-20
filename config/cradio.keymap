@@ -50,10 +50,10 @@
 
         numpad {
             bindings = <
-&kp LC(LEFT_ARROW)  &kp LC(DOWN_ARROW)  &kp LC(UP_ARROW)  &kp LC(RIGHT_ARROW)  &to 5         &kp FSLH      &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS
-&kp LEFT            &kp DOWN            &kp UP            &kp RIGHT            &sl 3         &kp COMMA     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PERIOD
-&kp HOME            &kp PAGE_DOWN       &kp PAGE_UP       &kp END              &sl 4         &kp ASTERISK  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PLUS
-                                                          &none                &kp ESCAPE    &kp EQUAL     &kp NUMBER_0
+&kp LC(LEFT_ARROW)  &kp LC(DOWN_ARROW)  &kp LC(UP_ARROW)  &kp LC(RIGHT_ARROW)  &to 5    &kp FSLH      &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS
+&kp LEFT            &kp DOWN            &kp UP            &kp RIGHT            &sl 3    &kp COMMA     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PERIOD
+&kp HOME            &kp PAGE_DOWN       &kp PAGE_UP       &kp END              &sl 4    &kp ASTERISK  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PLUS
+                                                          &none                &none    &kp EQUAL     &kp NUMBER_0
             >;
 
             display-name = "numpad";
@@ -64,7 +64,7 @@
 &none             &none     &none                  &none            &none         &kp BACKSLASH  &kp GRAVE          &kp QUESTION   &kp EXCLAMATION  &kp HASH
 &kp LESS_THAN     &kp LBKT  &kp LEFT_PARENTHESIS   &kp LEFT_BRACE   &kp CARET     &kp PERCENT    &kp APOS           &kp SEMICOLON  &kp TILDE        &kp AMPERSAND
 &kp GREATER_THAN  &kp RBKT  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp DOLLAR    &kp AT_SIGN    &kp DOUBLE_QUOTES  &kp COLON      &kp UNDERSCORE   &kp PIPE
-                                                   &none            &kp ESCAPE    &kp SPACE      &none
+                                                   &none            &none         &kp SPACE      &none
             >;
 
             display-name = "symbols";
