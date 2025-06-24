@@ -7,6 +7,7 @@ permissions:
 
 jobs:
   cheatsheet:
+    if: ${{ false }}
     runs-on: ubuntu-latest
 
     steps:
