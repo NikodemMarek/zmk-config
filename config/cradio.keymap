@@ -16,7 +16,7 @@
         compatible = "zmk,combos";
 
         symbols {
-            bindings = <&mo 0>;
+            bindings = <&mo 2>;
             key-positions = <31 32>;
             layers = <0 1 5>;
         };
@@ -39,10 +39,10 @@
 
         dvorak {
             bindings = <
-&kp ENTER        &kp TAB         &kp BACKSPACE     &kp P               &kp Y         &kp F      &kp G               &kp C             &kp R           &kp L
-&mt LEFT_META A  &mt LEFT_ALT O  &mt LEFT_SHIFT E  &mt LEFT_CONTROL U  &kp I         &kp D      &mt LEFT_CONTROL H  &mt LEFT_SHIFT T  &mt LEFT_ALT N  &mt LEFT_META S
-&key_repeat      &kp Q           &kp J             &kp K               &kp X         &kp B      &kp M               &kp W             &kp V           &kp Z
-                                                   &mo 1               &kp ESCAPE    &kp SPACE  &mo 2
+&kp ENTER        &kp TAB         &kp BACKSPACE     &kp P               &kp Y          &kp F      &kp G               &kp C             &kp R           &kp L
+&mt LEFT_META A  &mt LEFT_ALT O  &mt LEFT_SHIFT E  &mt LEFT_CONTROL U  &kp I          &kp D      &mt LEFT_CONTROL H  &mt LEFT_SHIFT T  &mt LEFT_ALT N  &mt LEFT_META S
+&kp ESCAPE       &kp Q           &kp J             &kp K               &kp X          &kp B      &kp M               &kp W             &kp V           &kp Z
+                                                   &mo 1               &key_repeat    &kp SPACE  &mo 2
             >;
 
             display-name = "dvorak";
