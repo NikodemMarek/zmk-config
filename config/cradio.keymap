@@ -12,68 +12,64 @@
 };
 
 / {
-    combos {
-        compatible = "zmk,combos";
-
-        symbols {
-            bindings = <&mo 2>;
-            key-positions = <31 32>;
-            layers = <0 1 5>;
-        };
-
-        back_to_dvorak {
-            bindings = <&to 0>;
-            key-positions = <33 30>;
-            layers = <5>;
-            require-prior-idle-ms = <500>;
-        };
-    };
+    combos { compatible = "zmk,combos"; };
 
     keymap {
         compatible = "zmk,keymap";
 
         dvorak {
             bindings = <
-&kp ENTER        &kp TAB         &kp BACKSPACE     &kp P               &kp Y          &kp F      &kp G               &kp C             &kp R           &kp L
-&mt LEFT_META A  &mt LEFT_ALT O  &mt LEFT_SHIFT E  &mt LEFT_CONTROL U  &kp I          &kp D      &mt LEFT_CONTROL H  &mt LEFT_SHIFT T  &mt LEFT_ALT N  &mt LEFT_META S
-&kp ESCAPE       &kp Q           &kp J             &kp K               &kp X          &kp B      &kp M               &kp W             &kp V           &kp Z
-                                                   &mo 1               &key_repeat    &kp SPACE  &mo 2
+&kp ESCAPE       &kp TAB         &kp BACKSPACE     &kp P               &kp Y      &kp F      &kp G               &kp C             &kp R           &kp L
+&mt LEFT_META A  &mt LEFT_ALT O  &mt LEFT_SHIFT E  &mt LEFT_CONTROL U  &lt 1 I    &lt 2 D    &mt LEFT_CONTROL H  &mt LEFT_SHIFT T  &mt LEFT_ALT N  &mt LEFT_META S
+&key_repeat      &kp Q           &kp J             &kp K               &lt 3 X    &lt 4 B    &kp M               &kp W             &kp V           &kp Z
+                                                   &none               &none      &kp SPACE  &kp ENTER
             >;
 
             display-name = "dvorak";
         };
 
-        numpad {
-            bindings = <
-&kp LC(LEFT_ARROW)  &kp LC(DOWN_ARROW)  &kp LC(UP_ARROW)  &kp LC(RIGHT_ARROW)  &to 5    &kp FSLH      &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS
-&kp LEFT            &kp DOWN            &kp UP            &kp RIGHT            &sl 3    &kp COMMA     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PERIOD
-&kp HOME            &kp PAGE_DOWN       &kp PAGE_UP       &kp END              &sl 4    &kp ASTERISK  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PLUS
-                                                          &none                &none    &kp EQUAL     &kp NUMBER_0
-            >;
-
-            display-name = "numpad";
-        };
-
         symbols {
             bindings = <
-&none             &none     &none                  &none            &none         &kp BACKSLASH  &kp GRAVE          &kp QUESTION   &kp EXCLAMATION  &kp HASH
-&kp LESS_THAN     &kp LBKT  &kp LEFT_PARENTHESIS   &kp LEFT_BRACE   &kp CARET     &kp PERCENT    &kp APOS           &kp SEMICOLON  &kp TILDE        &kp AMPERSAND
-&kp GREATER_THAN  &kp RBKT  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp DOLLAR    &kp AT_SIGN    &kp DOUBLE_QUOTES  &kp COLON      &kp UNDERSCORE   &kp PIPE
-                                                   &none            &none         &kp SPACE      &none
+&none  &none  &none  &none  &none    &kp BACKSLASH  &kp GRAVE          &kp QUESTION   &kp EXCLAMATION  &kp HASH
+&none  &none  &none  &none  &none    &kp PERCENT    &kp APOS           &kp SEMICOLON  &kp TILDE        &kp AMPERSAND
+&none  &none  &none  &none  &none    &kp AT_SIGN    &kp DOUBLE_QUOTES  &kp COLON      &kp UNDERSCORE   &kp PIPE
+                     &none  &none    &none          &none
             >;
 
             display-name = "symbols";
         };
 
-        navigation {
+        brackets {
             bindings = <
-&kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN    &none  &kp K_MUTE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP   &none
-&kp F5  &kp F6   &kp F7   &kp F8   &kp SCROLLLOCK     &none  &kp K_STOP  &kp K_PREVIOUS     &kp K_PLAY_PAUSE  &kp K_NEXT
-&kp F9  &kp F10  &kp F11  &kp F12  &kp C_PAUSE        &none  &none       &none              &none             &none
-                          &none    &none              &none  &none
+&none             &none     &none                  &none            &none         &none  &none  &none  &none  &none
+&kp LESS_THAN     &kp LBKT  &kp LEFT_PARENTHESIS   &kp LEFT_BRACE   &kp CARET     &none  &none  &none  &none  &none
+&kp GREATER_THAN  &kp RBKT  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp DOLLAR    &none  &none  &none  &none  &none
+                                                   &none            &none         &none  &none
             >;
 
-            display-name = "special";
+            display-name = "brackets";
+        };
+
+        numpad {
+            bindings = <
+&none  &none  &none  &none  &none    &kp FSLH      &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS
+&none  &none  &none  &none  &none    &kp COMMA     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PERIOD
+&none  &none  &none  &none  &none    &kp ASTERISK  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PLUS
+                     &none  &none    &kp EQUAL     &kp NUMBER_0
+            >;
+
+            display-name = "numpad";
+        };
+
+        arrows {
+            bindings = <
+&kp LC(LEFT_ARROW)  &kp LC(DOWN_ARROW)  &kp LC(UP_ARROW)  &kp LC(RIGHT_ARROW)  &to 5    &none  &none  &none  &none  &none
+&kp LEFT            &kp DOWN            &kp UP            &kp RIGHT            &mo 6    &none  &none  &none  &none  &none
+&kp HOME            &kp PAGE_DOWN       &kp PAGE_UP       &kp END              &none    &none  &none  &none  &none  &none
+                                                          &none                &none    &none  &none
+            >;
+
+            display-name = "arrows";
         };
 
         hardware {
@@ -81,21 +77,21 @@
 &bt BT_CLR    &none         &none         &none              &soft_off       &soft_off  &none  &none  &none  &none
 &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3       &bt BT_SEL 4    &none      &none  &none  &none  &none
 &out OUT_USB  &out OUT_BLE  &out OUT_TOG  &ext_power EP_TOG  &none           &none      &none  &none  &none  &none
-                                          &none              &none           &none      &none
+                                          &none              &none           &to 0      &none
             >;
 
             display-name = "special";
         };
 
-        gaming {
+        navigation {
             bindings = <
-&kp ESC    &kp Q  &kp W  &kp E     &kp R        &kp T  &kp Y   &kp U  &kp I  &kp O
-&kp LSHFT  &kp A  &kp S  &kp D     &kp F        &kp G  &kp H   &kp J  &kp K  &kp L
-&kp LCTRL  &kp Z  &kp X  &kp C     &kp V        &kp B  &kp N   &kp M  &kp P  &kp FSLH
-                         &kp LALT  &kp SPACE    &mo 0  &tog 1
+&kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN    &none  &kp K_MUTE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP   &none
+&kp F5  &kp F6   &kp F7   &kp F8   &kp SCROLLLOCK     &none  &kp K_STOP  &kp K_PREVIOUS     &kp K_PLAY_PAUSE  &kp K_NEXT
+&kp F9  &kp F10  &kp F11  &kp F12  &kp C_PAUSE        &none  &none       &none              &none             &none
+                          &none    &none              &to 0  &none
             >;
 
-            display-name = "gaming";
+            display-name = "special";
         };
     };
 };
